@@ -1,10 +1,4 @@
-# Exercício de Sala 🏫  
-
-## Nome do Exercicio
-
-- Explicação do exercício: 
-[CONTEUDO]
----
+# Exercícios de Sala 🏫  
 
 Terminou o exercício? Dá uma olhada nessa checklist e confere se tá tudo certinho, combinado?!
 
