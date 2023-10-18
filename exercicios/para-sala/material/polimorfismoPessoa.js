@@ -25,6 +25,8 @@ class User extends Person {
     pra lembrar: uma receita de strogonoff de frango, que pode ser strogonoff vegano. (não deixa de ser strogonoff).
     */
     speak() {
+        super.speak(); /* replica a mensagem da classe mãe, e adiciona o texto seguinte. 
+        diferente do "super" usado no construtor, a ordem de implementação para o método não importa, não dá erro.*/
         console.log(`A usuária ${this.name} está digitando...`)
     }
 }
