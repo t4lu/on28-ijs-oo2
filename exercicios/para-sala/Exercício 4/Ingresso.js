@@ -1,15 +1,20 @@
 class Ingresso {
-    preco = 0;
-
-    constructor(preco){
-        this.preco = preco;
-    }
-
+    preco = 10;
     mostrarPreco(){
-        console.log(`Este ingresso custa R$${this.preco}.`)
+        console.log(`Este ingresso custa R$${this.preco},00.`)
     }
 }
 
-const ingressoComum = new Ingresso(100);
+class IngressoNormal extends Ingresso {}
+
+class IngressoVIP extends Ingresso {
+    preco = this.preco += 2000 /* aqui, ele recebe a informação da classe mae, Ingresso, cujo preco é 10,
+    e soma com o valor que foi atribuido (2000, por exemplo) */
+}
+
+const ingressoComum = new Ingresso();
 console.log(ingressoComum);
 ingressoComum.mostrarPreco();
+
+const ingressoVip = new IngressoVIP(20)
+ingressoVip.mostrarPreco()
