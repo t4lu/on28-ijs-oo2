@@ -25,13 +25,23 @@ class Ingresso {
     }
 }
 
-class IngressoNormal extends Ingresso { }
+class IngressoNormal extends Ingresso { 
+    mostrarPreco(){
+        console.log(`INGRESSO NORMAL`);
+        super.mostrarPreco();
+    }
+}
 
 class IngressoVIP extends Ingresso {
     preco_promocional = 50;
     preco_primeiro_lote = 60;
     preco_segundo_lote = 70;
     preco_terceiro_lote = 80;
+
+    mostrarPreco(){
+        console.log(`INGRESSO VIP`);
+        super.mostrarPreco();
+    }
 }
 
 
