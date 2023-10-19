@@ -99,7 +99,7 @@ console.log("\n=== ==== === === ==== ==== == === ===\n");
 
 const assistente = new Assistente("Abel", 89456721382, 3000, 8345692);
 assistente.exibirDados();
-assistente.receberAumento();
+assistente.receberAumento(); /* na classe filha, o método não é alterado, então, como resultado é 10% em cima do valor recebido. */
 
 console.log("\n=== ==== === === ==== ==== == === ===\n");
 
