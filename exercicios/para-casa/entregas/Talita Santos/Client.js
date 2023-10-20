@@ -1,4 +1,4 @@
-const { Bank } = require('./Bank');
+const { Bank, taluBank, luaBank, analuBank, nubank } = require('./Bank');
 
 class Client {
 	name;
@@ -67,5 +67,26 @@ class Client {
 		console.log(`Banco ${bank.bankCode} removido da cliente ${this.name}`);
 	}
 }
+const cliente = new Client("talu", 123456789010);
+console.log(cliente);
+cliente.addBank(taluBank);
+cliente.addBank(luaBank);
+cliente.addBank(analuBank);
+cliente.addBank(nubank);
+console.log(cliente);
+cliente.removeBank(nubank);
+console.log(cliente);
 
-module.exports = { Client };
+console.log("==================");
+
+const cliente1 = new Client("talita", 10987654321);
+console.log(cliente1);
+cliente1.addBank(taluBank);
+cliente1.addBank(luaBank);
+cliente1.addBank(analuBank);
+cliente1.addBank(nubank);
+console.log(cliente1);
+cliente1.removeBank(taluBank);
+console.log(cliente1);
+
+module.exports = { Client, cliente, cliente1 };

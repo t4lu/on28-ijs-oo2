@@ -1,5 +1,5 @@
-const { Bank } = require('./Bank');
-const { Client } = require('./Client');
+const { Bank, taluBank, luaBank } = require('./Bank');
+const { Client, cliente, cliente1 } = require('./Client');
 
 class BankAccount {
 	client;
@@ -112,4 +112,21 @@ class BankAccount {
 	}
 }
 
-module.exports = { BankAccount };
+const contaTalita = new BankAccount(cliente1, luaBank, 5321, 5462);
+const contaTalu = new BankAccount(cliente, taluBank, 1235, 5146);
+
+contaTalita.creditAmount(5000);
+contaTalita.debitAmount(200);
+contaTalita.transferTo(contaTalu, 100);
+contaTalita.cashWithdrawal(150);
+contaTalita.closeAccount();
+
+console.log("\n==================\n");
+
+contaTalu.creditAmount(2000);
+contaTalu.debitAmount(2000);
+contaTalu.transferTo(contaTalita, 20)
+contaTalu.cashWithdrawal(100);
+contaTalu.closeAccount();
+
+module.exports = { BankAccount, contaTalita, contaTalu };
