@@ -39,12 +39,12 @@ class BankAccount {
 
 	creditAmount(amount) {
 		this.#balance += amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
+		console.log(`Você depositou R$ ${amount},00. O novo saldo da conta é: R$ ${this.#balance},00`);
 	}
 
 	debitAmount(amount) {
 		this.#balance -= amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
+		console.log(`Você utilizou R$ ${amount},00. O novo saldo da conta é: R$ ${this.#balance},00`);
 	}
 
 	transferTo(anotherAccount, amount) {
@@ -57,25 +57,23 @@ class BankAccount {
 		if (this.bank.bankCode !== anotherAccount.bank.bankCode) {
 			amountToBeDebited = amount + amount * this.bank.transferTax;
 			console.log(
-				`Essa transferência terá uma taxa de ${
-					this.bank.transferTax * 100
-				}%, pois se trata de uma transferência entre bancos diferentes.`
-			);
+				`Essa transferência terá uma taxa de ${this.bank.transferTax * 100
+				}%, pois se trata de uma transferência entre bancos diferentes.`);
+			console.log(`Será descontado R$${amountToBeDebited},00 da sua conta.`);
 		}
 
 		if (this.#balance >= amountToBeDebited) {
 			this.#balance -= amountToBeDebited;
 			anotherAccount.balance += amount;
 
-			console.log(`O saldo atual da conta de origem é de R$ ${this.#balance}`);
+			console.log(`O saldo atual da conta de origem é de R$ ${this.#balance},00`);
 			console.log(
-				`O saldo atual da conta de destino é de R$ ${anotherAccount.balance}`
+				`O saldo atual da conta de destino é de R$ ${anotherAccount.balance},00`
 			);
 		} else {
 			console.log(
-				`Saldo insuficiente para realizar a transferência. Seu saldo atual é de ${
-					this.#balance
-				}. Para realizar essa transferência você precisa ter ${amountToBeDebited} em conta.`
+				`Saldo insuficiente para realizar a transferência. Seu saldo atual é de R$ ${this.#balance
+				}. Para realizar essa transferência você precisa ter R$ ${amountToBeDebited},00 em conta.`
 			);
 		}
 	}
@@ -92,16 +90,25 @@ class BankAccount {
 			console.log(`Conta encerrada!`);
 		} else {
 			console.log(
-				`Você possui um saldo de R$ ${
-					this.#balance
-				}. Para encerrar a conta é necessário que o saldo seja igual a zero.`
+				`Você possui um saldo de R$ ${this.#balance
+				},00. Para encerrar a conta é necessário que o saldo seja igual a zero.`
 			);
 		}
 	}
 
-	// Criar método cashWithdrawal
 	cashWithdrawal(amount) {
-		// Implementar esse método
+		if (this.#balance === 0 || this.#balance < 0) {
+			console.log(`Saldo indisponível para saque.`);
+			return
+		}
+
+		if (amount <= this.#balance) {
+			this.#balance -= amount;
+			console.log(`Saque no valor de R$ ${amount},00 realizado.\nSaldo disponível: R$ ${this.#balance},00`);
+		} else {
+			console.log(`Saldo indisponível para saque.`);
+			return
+		}
 	}
 }
 
